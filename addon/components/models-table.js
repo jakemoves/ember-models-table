@@ -653,7 +653,7 @@ export default Component.extend({
    * @default [10, 25, 50]
    * @name ModelsTable#pageSizeValues
    */
-  pageSizeValues: A([10, 25, 50]),
+  pageSizeValues: A([10, 25, 50, 100]),
 
   /**
    * Show first page if for some reasons there is no content for current page, but table data exists
@@ -747,6 +747,11 @@ export default Component.extend({
 
       if (isNone(get(c, 'mayBeHidden'))) {
         set(c, 'mayBeHidden', true);
+      }
+      
+      if(!isNone(get(c, 'group'))){
+        let group = get(c, 'group');
+        set(c, 'is' + group, true);
       }
 
       const { sortDirection, sortPrecedence } = column;

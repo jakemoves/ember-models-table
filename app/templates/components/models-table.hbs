@@ -10,9 +10,6 @@
   {{/if}}
   {{! columns dropdown end }}
 
-  <!-- Div needed by Firefox to reset floating positioning -->
-  <div style="clear:both"/>
-
   <div class="{{classes.innerTableWrapper}}">
     <table class="{{classes.table}}">
       {{! table header start }}
@@ -21,13 +18,10 @@
         {{#each processedColumns as |column|}}
           {{#if column.isVisible}}
             {{#if column.useSorting}}
-              <th class="{{classes.theadCell}}" {{action "sort" column}}>
-                {{column.title}}
-                <span class="{{if column.sortAsc icons.sort-asc}} {{if column.sortDesc icons.sort-desc}}"></span>
-              </th>
+              <th class="{{classes.theadCell}}" {{action "sort" column}}>{{{column.title}}}<span class="{{if column.sortAsc icons.sort-asc}} {{if column.sortDesc icons.sort-desc}}"></span></th>
             {{else}}
               <th class="{{classes.theadCell}} {{classes.theadCellNoSorting}}">
-                {{column.title}}
+                {{{column.title}}}
               </th>
             {{/if}}
           {{/if}}

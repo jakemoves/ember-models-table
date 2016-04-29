@@ -1,6 +1,6 @@
 {
-  "name": "ember-models-table",
-  "version": "1.6.0",
+  "name": "prism-models-table",
+  "version": "1.6.1",
   "description": "Table with pagination, sorting and filtering",
   "directories": {
     "doc": "doc",
@@ -11,11 +11,11 @@
     "start": "ember server",
     "test": "ember try:testall"
   },
-  "repository": "https://github.com/onechiporenko/ember-models-table",
+  "repository": "https://github.com/jakemoves/ember-models-table",
   "engines": {
     "node": ">= 0.10.0"
   },
-  "author": "Oleg Nechiporenko",
+  "author": "Jacob Niedzwiecki after Oleg Nechiporenko",
   "license": "MIT",
   "devDependencies": {
     "broccoli-asset-rev": "^2.2.0",
