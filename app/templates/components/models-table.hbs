@@ -14,11 +14,11 @@
     <table class="{{classes.table}}">
       {{! table header start }}
       <thead>
-      <tr>
+      <tr class="header-title-row">
         {{#each processedColumns as |column|}}
           {{#if column.isVisible}}
             {{#if column.useSorting}}
-              <th class="{{classes.theadCell}}" {{action "sort" column}}>{{{column.title}}}<span class="{{if column.sortAsc icons.sort-asc}} {{if column.sortDesc icons.sort-desc}}"></span></th>
+              <th class="{{classes.theadCell}} {{column.headerClass}}" {{action "sort" column}}>{{{column.title}}}<span class="{{if column.sortAsc icons.sort-asc}} {{if column.sortDesc icons.sort-desc}}"></span></th>
             {{else}}
               <th class="{{classes.theadCell}} {{classes.theadCellNoSorting}}">
                 {{{column.title}}}
@@ -28,7 +28,7 @@
         {{/each}}
       </tr>
       {{#if useFilteringByColumns}}
-        <tr>
+        <tr class="header-filter-row">
           {{#each processedColumns as |column|}}
             {{#if column.isVisible}}
               <th class="{{classes.theadCell}} {{unless column.useFilter classes.theadCellNoFiltering}}">

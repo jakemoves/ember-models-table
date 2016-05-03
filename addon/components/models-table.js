@@ -144,7 +144,7 @@ export default Component.extend({
    * @name ModelsTable#pageSize
    * @default 10
    */
-  pageSize: 10,
+  pageSize: 20,
 
   /**
    * @type {number}
