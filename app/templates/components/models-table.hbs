@@ -14,6 +14,31 @@
     <table class="{{classes.table}}">
       {{! table header start }}
       <thead>
+        {{#if useFilteringByColumns}}
+        <tr class="header-filter-row {{unless showFilterRow 'hidden'}}">
+          {{#each processedColumns as |column|}}
+            {{#if column.isVisible}}
+              <th class="{{classes.theadCell}} {{column.headerClass}} {{unless column.useFilter classes.theadCellNoFiltering}}">
+                {{#if column.useFilter}}
+                  {{#if column.filterWithSelect}}
+                    <select class="form-control changeFilterForColumn {{column.propertyName}}" {{action "changeFilterForColumn" column on="change"}}>
+                      {{#each column.filterOptions key="@index" as |item|}}
+                        <option value="{{item}}" selected={{is-equal item selectedValue}}>
+                          {{item}}
+                        </option>
+                      {{/each}}
+                    </select>
+                  {{else}}
+                    {{input type="text" value=column.filterString class="form-control" enter="" focus-out="changeFilterString" placeholder=column.filterPlaceholderText}}
+                  {{/if}}
+                {{else}}
+                  &nbsp;
+                {{/if}}
+              </th>
+            {{/if}}
+          {{/each}}
+        </tr>
+      {{/if}}
       <tr class="header-title-row">
         {{#each processedColumns as |column|}}
           {{#if column.isVisible}}
@@ -27,31 +52,7 @@
           {{/if}}
         {{/each}}
       </tr>
-      {{#if useFilteringByColumns}}
-        <tr class="header-filter-row">
-          {{#each processedColumns as |column|}}
-            {{#if column.isVisible}}
-              <th class="{{classes.theadCell}} {{unless column.useFilter classes.theadCellNoFiltering}}">
-                {{#if column.useFilter}}
-                  {{#if column.filterWithSelect}}
-                    <select class="form-control changeFilterForColumn {{column.propertyName}}" {{action "changeFilterForColumn" column on="change"}}>
-                      {{#each column.filterOptions key="@index" as |item|}}
-                        <option value="{{item}}" selected={{is-equal item selectedValue}}>
-                          {{item}}
-                        </option>
-                      {{/each}}
-                    </select>
-                  {{else}}
-                    {{input type="text" value=column.filterString class="form-control" enter="" focus-out="changeFilterString"}}
-                  {{/if}}
-                {{else}}
-                  &nbsp;
-                {{/if}}
-              </th>
-            {{/if}}
-          {{/each}}
-        </tr>
-      {{/if}}
+      
       </thead>
       {{! table header end }}
       {{! table body start }}

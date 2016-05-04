@@ -204,7 +204,16 @@ export default Component.extend({
    * @default true
    */
   useFilteringByColumns: true,
-
+  
+  /**
+   * Determines if filter row should be shown 
+   *
+   * @type {boolean}
+   * @name ModelsTable#showFilterRow
+   * @default true
+   */
+  showFilterRow: true,
+  
   /**
    * @type {string}
    * @name ModelsTable#filterString
@@ -1120,6 +1129,11 @@ export default Component.extend({
     changeFilterString () {
       set(this, 'currentPageNumber', 1);
       this._sendDisplayDataChangedAction();
+    },
+    
+    toggleShowFilterRow(){
+      let currentSetting = get(this, 'showFilterRow');
+      set(this, 'showFilterRow', !currentSetting);
     }
 
   }
