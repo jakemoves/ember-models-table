@@ -34,7 +34,7 @@
               <th class="{{classes.theadCell}} {{column.headerClass}} {{unless column.useFilter classes.theadCellNoFiltering}}">
                 {{#if column.useFilter}}
                   {{#if column.filterWithSelect}}
-                    <select class="form-control changeFilterForColumn {{column.propertyName}}" {{action "changeFilterForColumn" column on="change"}}>
+                    <select class="form-control changeFilterForColumn {{dot-to-dash column.propertyName}}" {{action "changeFilterForColumn" column on="change"}}>
                       {{#each column.filterOptions key="@index" as |item|}}
                         <option value="{{item}}" selected={{is-equal item selectedValue}}>
                           {{item}}

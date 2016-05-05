@@ -1120,7 +1120,7 @@ export default Component.extend({
      * @param {ModelsTableColumn} column
      */
     changeFilterForColumn (column) {
-      let val = this.$(`.changeFilterForColumn.${get(column, 'propertyName')}`)[0].value;
+      let val = this.$('.changeFilterForColumn.' + get(column, 'propertyName').replace('.', '-'))[0].value;
       set(column, 'filterString', val);
       set(this, 'currentPageNumber', 1);
       this._sendDisplayDataChangedAction();
